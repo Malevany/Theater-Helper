@@ -1,0 +1,192 @@
+﻿<UserControl x:Class="TheaterHelperWPF.View.PlayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheaterHelperWPF.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="bvc"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" Grid.Row="0"
+                   Text="Информация о постановке"
+                   FontSize="25"
+                   HorizontalAlignment="Left"  Margin="10"/>
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,10,0">
+            <Button Grid.Column="1"
+                    Command="{Binding ToPlays}"
+                    Background="LightBlue"
+                    HorizontalAlignment="Stretch"
+                    Margin="10">
+                <TextBlock Text="Вернуться к репертуару"
+                           FontSize="15"
+                           Margin="5"/>
+            </Button>
+        </StackPanel>
+        
+        <TabControl Grid.Column="2" Grid.Row="1" 
+                    Background="Transparent"
+                    BorderThickness="0">
+            <TabItem Header="Описание"
+                     Background="LightBlue"
+                     BorderThickness="0">
+                <StackPanel Grid.Row="1" Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Width="350">
+                    <DockPanel
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Stretch">
+                        <TextBlock Text="Название постановки:"
+                                   FontSize="25" TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   Width="175"
+                                   Margin="5"/>
+                        <TextBox Text="{Binding PlayName}"
+                                 FontSize="25" TextWrapping="Wrap" TextAlignment="Center"
+                                 Background="Transparent" 
+                                 BorderThickness="2" BorderBrush="LightBlue"
+                                 VerticalAlignment="Stretch"
+                                 Margin="5"/>
+                    </DockPanel>
+                    <DockPanel
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Stretch">
+                        <TextBlock Text="Длительность постановки:"
+                                   FontSize="25" TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   Width="175"
+                                   Margin="5"/>
+                        <TextBox Text="{Binding PlayDuration}"
+                                 FontSize="25" TextWrapping="Wrap" TextAlignment="Center"
+                                 Background="Transparent" 
+                                 BorderThickness="2" BorderBrush="LightBlue"
+                                 VerticalAlignment="Stretch"
+                                 Margin="5"/>
+                    </DockPanel>
+                    <TextBlock Text="{Binding Message}"
+                               Visibility="{Binding IsMessageVisible, Converter={StaticResource ResourceKey=bvc}}"
+                               HorizontalAlignment="Center"
+                               FontSize="25" TextWrapping="Wrap" TextAlignment="Center"
+                               Foreground="{Binding MessageColor}"
+                               Margin="5"/>
+                    <Button Command="{Binding CompletAction}"
+                            Background="LightBlue"
+                            HorizontalAlignment="Center"
+                            Margin="10">
+                        <TextBlock Text="{Binding ButtonContent}"
+                                   FontSize="15"
+                                   Margin="5"/>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Список ролей"
+                     Visibility="{Binding IsRolesVisible, Converter={StaticResource ResourceKey=bvc}}"
+                     Background="LightBlue"
+                     BorderThickness="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0"
+                                Orientation="Vertical"
+                                VerticalAlignment="Top" HorizontalAlignment="Center"
+                                Margin="0,20,0,0">
+                        <Button Command="{Binding AddRole}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Stretch"
+                                Margin="10">
+                            <TextBlock Text="Добавить роль"
+                                       FontSize="15"
+                                       Margin="5"/>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"
+                                Orientation="Vertical"
+                                VerticalAlignment="Top" HorizontalAlignment="Center"
+                                Margin="0,20,0,0">
+                        <DockPanel
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Stretch"
+                                   Width="175">
+                            <TextBlock DockPanel.Dock="Top"
+                                       Text="Роль"
+                                       FontSize="25" TextWrapping="Wrap"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                                       Margin="5"/>
+                            <TextBox Text="{Binding RoleName}"
+                                     FontSize="25" TextWrapping="Wrap" TextAlignment="Center"
+                                     Background="Transparent" 
+                                     BorderThickness="2" BorderBrush="LightBlue"
+                                     VerticalAlignment="Stretch"
+                                     Margin="5"/>
+                        </DockPanel>
+                        <DockPanel
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Stretch"
+                                   Width="230">
+                            <TextBlock DockPanel.Dock="Top"
+                                       Text="Важность"
+                                       FontSize="25" TextWrapping="Wrap"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                                       Margin="5"/>
+                            <ComboBox ItemsSource="{Binding RoleImportances}"
+                                      SelectedValue="{Binding RoleImportance}"
+                                      FontSize="25" 
+                                      Background="Transparent"
+                                      BorderThickness="2" BorderBrush="LightBlue"
+                                      Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </DockPanel>
+                        <TextBlock Text="{Binding RoleMessage}"
+                                   Visibility="{Binding IsRoleMessageVisible, Converter={StaticResource ResourceKey=bvc}}"
+                                   HorizontalAlignment="Center"
+                                   FontSize="25" TextWrapping="Wrap" TextAlignment="Center"
+                                   Foreground="{Binding RoleMessageColor}"
+                                   Margin="5"/>
+                        <Button Command="{Binding SaveRole}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Center"
+                                Margin="10">
+                            <TextBlock Text="Сохранить"
+                                       FontSize="15"
+                                       Margin="5"/>
+                        </Button>
+                    </StackPanel>
+                    <ListBox Grid.Column="2"
+                             ItemsSource="{Binding Roles}"
+                             SelectedItem="{Binding SelectedRole}"
+                             Background="Transparent" BorderThickness="0"
+                             Margin="20, 20, 5, 20">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

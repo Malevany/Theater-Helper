@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="db\**" />
+    <EmbeddedResource Remove="db\**" />
+    <None Remove="db\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="WorkWithFile.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TheaterHelper.BusinessLogic\TheaterHelper.BusinessLogic.csproj" />
+  </ItemGroup>
+
+</Project>

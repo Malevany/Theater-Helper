@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="TheaterHelperWPF.View.RepertoireView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheaterHelperWPF.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="bvc"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="Репертуар"
+                   FontSize="20"
+                   HorizontalAlignment="Left"  
+                   Margin="10" />
+        <TextBlock/>
+        <TabControl Grid.Row="1"
+                    Background="Transparent" 
+                    BorderThickness="0">
+            <TabItem Header="Список постановок"
+                     Background="LightBlue"
+                     BorderThickness="0">
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="0,20,0,0">
+                        <Button Command="{Binding AddPlay}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Stretch"
+                                Margin="10">
+                            <TextBlock Text="Добавить постановку"
+                                       FontSize="15" TextAlignment="Center" TextWrapping="Wrap"
+                                       Margin="8"/>
+                        </Button>
+                        <Button Command="{Binding ShowPlay}"
+                                Visibility="{Binding IsPlayButtonsVisible, Converter={StaticResource ResourceKey=bvc}}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Stretch"
+                                Margin="10">
+                            <TextBlock Text="Открыть страницу постановки"
+                                       FontSize="15" TextWrapping="Wrap" TextAlignment="Center"
+                                       Margin="8"/>
+                        </Button>
+                    </StackPanel>
+                    <ListBox Grid.Column="1"
+                             ItemsSource="{Binding Plays}"
+                             SelectedItem="{Binding SelectedPlay}"
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Margin="20, 20, 0, 20">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Список трупп"
+                     Background="LightBlue"
+                     BorderThickness="0">
+                <Grid Grid.Row="1">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="0,20,0,0">
+                        <Button Command="{Binding AddTroupe}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Stretch"
+                                Margin="10">
+                            <TextBlock Text="Собрать труппу"
+                                       FontSize="15"
+                                       Margin="5"/>
+                        </Button>
+                        <Button Command="{Binding ShowTroupe}"
+                                Visibility="{Binding IsTroupeButtonsVisible, Converter={StaticResource ResourceKey=bvc}}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Stretch"
+                                Margin="10">
+                            <TextBlock Text="Открыть страницу труппы"
+                                       FontSize="15"
+                                       TextWrapping="Wrap" TextAlignment="Center"
+                                       Margin="5"/>
+                        </Button>
+                    </StackPanel>
+                    
+                    <ListBox Grid.Column="1"
+                             ItemsSource="{Binding Plays}"
+                             SelectedItem="{Binding SelectedPlay}"
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Margin="20, 20, 0, 20">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                    
+                    <ListBox Grid.Column="2"
+                             ItemsSource="{Binding TroupesForPlay}"
+                             SelectedItem="{Binding SelectedTroupe}"
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Margin="20, 20, 0, 20">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\ActorShortView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ActorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\HomeScreenView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PlayView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\RepertoireView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\RoleShortView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SubmissionShortView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SubmissionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\TimetableView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\TroupeDetailsInstructionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\TroupeDetailsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\TroupeShortView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ActorShortView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ActorsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ActorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\HomeScreenView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PlayShortView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PlayView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RepertoireView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RoleShortView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SubmissionShortView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SubmissionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TimetableView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TroupeDetailsInstructionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TroupeDetailsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TroupeShortView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

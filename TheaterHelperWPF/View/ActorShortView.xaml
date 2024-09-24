@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="TheaterHelperWPF.View.ActorShortView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheaterHelperWPF.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{Binding FIO}" FontSize="20"/>
+    </StackPanel>
+    
+</UserControl>

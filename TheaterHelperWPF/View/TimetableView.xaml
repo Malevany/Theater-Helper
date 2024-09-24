@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="TheaterHelperWPF.View.TimetableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheaterHelperWPF.View"
+             xmlns:vm="clr-namespace:TheaterHelperWPF.ViewModel"
+             xmlns:my="clr-namespace:TheaterHelperWPF.View.CustomElements"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="bvc"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="Расписание" 
+                   FontSize="25"
+                   HorizontalAlignment="Left"  
+                   Margin="10"/>
+        <TextBlock/>
+        <TextBlock Grid.Row="0" Grid.Column="1" 
+                   Text="{Binding SelectedMonthName}" 
+                   FontSize="25"
+                   HorizontalAlignment="Center"  
+                   Margin="10"/>
+        <TextBlock/>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <TextBlock Text="Выберите месяц:"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       Margin="10"/>
+            <DatePicker my:DatePickerCalendar.IsMonthYear="True"
+                        my:DatePickerDateFormat.DateFormat="MM/yyyy"
+                        IsTodayHighlighted="True"
+                        SelectedDate="{Binding SelectedMonth}"
+                        Margin="10"/>
+            <StackPanel Grid.Column="0" Grid.Row="1"
+                        Orientation="Vertical"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Margin="0,20,0,0">
+                <Button Command="{Binding AddSchedule}"
+                        Background="LightBlue"
+                        HorizontalAlignment="Stretch"
+                        Margin="10">
+                    <TextBlock Text="Добавить выступление"
+                               FontSize="15"
+                               Margin="5"/>
+                </Button>
+                <Button Command="{Binding ShowSchedule}"
+                        Visibility="{Binding IsVisible, Converter={StaticResource ResourceKey=bvc}}"
+                        Background="LightBlue"
+                        HorizontalAlignment="Stretch"
+                        Margin="10">
+                    <TextBlock Text="Открыть выступление"
+                               FontSize="15"
+                               TextWrapping="Wrap" TextAlignment="Center"
+                               Margin="5"/>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+        <ListBox Grid.Column="1" Grid.Row="1"
+                 ItemsSource="{Binding ScheduleForMonth}"
+                 SelectedItem="{Binding SelectedSchedule}"
+                 Background="Transparent" BorderThickness="0"
+                 Width="550"
+                 Margin="10, 20, 10, 20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:SubmissionShortView />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
+    </Grid>
+</UserControl>

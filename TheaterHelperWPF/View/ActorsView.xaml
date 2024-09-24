@@ -1,0 +1,319 @@
+﻿<UserControl x:Class="TheaterHelperWPF.View.ActorsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheaterHelperWPF.View"
+             xmlns:vm="clr-namespace:TheaterHelperWPF.ViewModel"
+             xmlns:my="clr-namespace:TheaterHelperWPF.View.CustomElements"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="bvc"/>
+        <Style TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Width="20" Height="20" Margin="5">
+                                <Ellipse Fill="White" Stroke="Black" StrokeThickness="2"/>
+                                <Ellipse x:Name="Dot" Fill="Black" Width="12" Height="12" Visibility="Hidden"/>
+                            </Grid>
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Dot" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+    </UserControl.Resources>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0"
+                   Text="Актеры" 
+                   FontSize="25"
+                   HorizontalAlignment="Left"  
+                   Margin="10"/>
+        <TextBlock/>
+
+        <TabControl Grid.Row="1"
+                    Background="Transparent" 
+                    BorderThickness="0">
+
+            <TabItem Header="Список актеров"
+                     Background="LightBlue"
+                     BorderThickness="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0"
+                                Orientation="Vertical"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="0,20,0,0">
+                        <Button Command="{Binding AddActor}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Stretch"
+                                Margin="10">
+                            <TextBlock Text="Добавить актера"
+                                       FontSize="15"
+                                       Margin="5"/>
+                        </Button>
+                        <Button Command="{Binding ShowActor}"
+                                Visibility="{Binding IsVisible, Converter={StaticResource ResourceKey=bvc}}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Stretch"
+                                Margin="10">
+                            <TextBlock Text="Открыть страницу актера"
+                                       FontSize="15"
+                                       TextWrapping="Wrap" TextAlignment="Center"
+                                       Margin="5"/>
+                        </Button>
+                    </StackPanel>
+                    <ListBox Grid.Column="1"
+                             ItemsSource="{Binding Actors}"
+                             SelectedItem="{Binding SelectedActor}"
+                             Background="Transparent" BorderThickness="0"
+                             Margin="20, 20, 10, 20">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Зарплата актеров"
+                     Background="LightBlue"
+                     BorderThickness="0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0"
+                                Orientation="Vertical"
+                                Margin="10,20,0,0"
+                                HorizontalAlignment="Stretch">
+
+                        <TextBlock Text="Выберите месяц:"
+                                   FontSize="20"
+                                   HorizontalAlignment="Center"
+                                   Margin="10"/>
+
+                        <DatePicker my:DatePickerCalendar.IsMonthYear="True"
+                                    my:DatePickerDateFormat.DateFormat="MM/yyyy"
+                                    IsTodayHighlighted="True"
+                                    SelectedDate="{Binding SelectedPayrollDate}"
+                                    Margin="10"/>
+
+                        <TextBlock Text="Стратегия расчета ЗП"
+                                   FontSize="20"
+                                   HorizontalAlignment="Center"
+                                   Margin="10"/>
+
+                        <!--<DockPanel Grid.Column="0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Stretch">
+
+                            <RadioButton IsChecked="{Binding SelectedStrategy, Converter={StaticResource ResourceKey=strategyConverterKey}, ConverterParameter=new BasePayrollStrategy}"
+                                         GroupName="PayrollStrategies"
+                                         VerticalAlignment="Center"
+                                         DockPanel.Dock="Left"/>
+
+                            <TextBlock Text="На основе участия в постановках за месяц"
+                                       FontSize="15" TextWrapping="Wrap"
+                                       Margin="5"/>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Column="0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Stretch">
+
+                            <RadioButton IsChecked="{Binding SelectedStrategy, Converter={StaticResource ResourceKey=strategyConverterKey}, ConverterParameter=ExtendedPayrollStrategy}"
+                                         GroupName="PayrollStrategies"
+                                         VerticalAlignment="Center"
+                                         DockPanel.Dock="Left"/>
+
+                            <TextBlock Text="На основе участия в постановках за месяц с учетом звания артиста"
+                                       FontSize="15" TextWrapping="Wrap"
+                                       Margin="5"/>
+
+
+                        </DockPanel>-->
+
+
+
+                        <ComboBox ItemsSource="{Binding PayrollStrategies}"
+                                   SelectedValue="{Binding SelectedPayrollStrategy}"
+                                   Height="Auto"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Top" 
+                                   Width="200">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Button Command="{Binding CalculateActorsPayroll}"
+                                Background="LightBlue"
+                                HorizontalAlignment="Center"
+                                Margin="10">
+                            <TextBlock Text="Рассчитать ЗП"
+                                       FontSize="15"
+                                       Margin="5"/>
+                        </Button>
+
+                    </StackPanel>
+                    <DataGrid Grid.Column="1"
+                              ItemsSource="{Binding ActorsPayroll, Mode=OneWay}"
+                              AutoGenerateColumns="False"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalAlignment="Stretch"
+                              Margin="10,20,10,10" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding FIO, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Сумма ЗП" Binding="{Binding Payroll, Mode=OneWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Премии актеров"
+                     Background="LightBlue"
+                     BorderThickness="0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="460"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                                Orientation="Horizontal"
+                                >
+
+                        <StackPanel
+                                    Orientation="Vertical"
+                                    VerticalAlignment="Top"
+                                    Width="230">
+
+                            <TextBlock Text="Критерии расчета премии"
+                                       TextWrapping="Wrap" TextAlignment="Center" FontSize="20"
+                                       HorizontalAlignment="Stretch"
+                                       Margin="10"/>
+
+                            <DockPanel Grid.Column="0"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Stretch">
+                                <CheckBox IsChecked="{Binding FirstCriteriaChecked}"
+                                          VerticalAlignment="Center"
+                                          DockPanel.Dock="Left"/>
+
+                                <TextBlock Text="Среднее значение успеха постановок с участием артиста"
+                                           FontSize="15" TextWrapping="Wrap"
+                                           Margin="5"/>
+
+                            </DockPanel>
+
+                            <DockPanel Grid.Column="0"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Stretch">
+
+                                <CheckBox IsChecked="{Binding SecondCriteriaChecked}"
+                                          VerticalAlignment="Center"
+                                          DockPanel.Dock="Left"/>
+
+                                <TextBlock Text="Количество постановок с участием этого артиста"
+                                           FontSize="15" TextWrapping="Wrap"
+                                           Margin="5"/>
+
+
+                            </DockPanel>
+
+                            <DockPanel Grid.Column="0"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Stretch">
+
+                                <CheckBox IsChecked="{Binding ThirdCriteriaChecked}"
+                                          VerticalAlignment="Center"
+                                          DockPanel.Dock="Left"/>
+
+                                <TextBlock Text="Звание артиста"
+                                           FontSize="15" TextWrapping="Wrap"
+                                           Margin="5"/>
+
+
+                            </DockPanel>
+
+                        </StackPanel>
+                        <StackPanel
+                                    Orientation="Vertical"
+                                    VerticalAlignment="Top"
+                                    Width="230"
+                                    DockPanel.Dock="Right">
+
+                            <TextBlock Text="Выберите месяц:"
+                                       FontSize="20"
+                                       HorizontalAlignment="Center"
+                                       Margin="10"/>
+
+                            <DatePicker my:DatePickerCalendar.IsMonthYear="True"
+                                        my:DatePickerDateFormat.DateFormat="MM/yyyy"
+                                        IsTodayHighlighted="True"
+                                        SelectedDate="{Binding SelectedPremiumDate}"
+                                        Margin="10"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button Grid.Column="0"
+                            Command="{Binding CalculateActorsPremium}"
+                            Background="LightBlue"
+                            HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                            Margin="10">
+                        <TextBlock Text="Рассчитать премии"
+                                   FontSize="15"
+                                   Margin="5"/>
+                    </Button>
+                    <DataGrid Grid.Column="1"
+                              ItemsSource="{Binding ActorsPremium, Mode=OneWay}"
+                              AutoGenerateColumns="False"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalAlignment="Stretch"
+                              
+                              Margin="10,20,10,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding FIO, Mode=OneWay}"/>
+                            <DataGridTextColumn Header="Сумма ЗП" Binding="{Binding Premium, Mode=OneWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </TabItem>
+            
+        </TabControl>
+        <ContentControl Grid.Row="1"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Content="{Binding CurrentActorsViewModel}"/>
+    </Grid>
+</UserControl>

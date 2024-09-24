@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TheaterHelper.BusinessLogic.PremiumDecorator.AppearancesDecorator" Collapsed="true">
+    <Position X="2.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PremiumDecorator\AppearancesDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.PremiumDecorator.PremiumCalculator">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PremiumDecorator\PremiumCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.PremiumDecorator.PremiumCalculatorDecorator" Collapsed="true">
+    <Position X="3.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>PremiumDecorator\PremiumCalculatorDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.PremiumDecorator.SuccessRateDecorator" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PremiumDecorator\SuccessRateDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.PremiumDecorator.TitleDecorator" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PremiumDecorator\TitleDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.PayrollStrategies.BasePayrollStrategy" Collapsed="true">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>PayrollStrategies\BasePayrollStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.PayrollStrategies.ExtendedPayrollStrategy" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>PayrollStrategies\ExtendedPayrollStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.Theater" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAABAgAAACAAAAAkAAADBAgAAAAAAAEAAABAACAAAE=</HashCode>
+      <FileName>Theater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.SessionState.CanceledState" Collapsed="true">
+    <Position X="19.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>SessionState\CanceledState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.SessionState.PastState" Collapsed="true">
+    <Position X="20" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>SessionState\PastState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.SessionState.UpcomingState" Collapsed="true">
+    <Position X="18" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>SessionState\UpcomingState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TheaterHelper.BusinessLogic.Session">
+    <Position X="14.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAgAAAAAAAIAAAAIAEAACAAAAAAAAABAACAgA=</HashCode>
+      <FileName>Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TheaterHelper.BusinessLogic.PayrollStrategies.IPayrollStrategy" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>PayrollStrategies\IPayrollStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TheaterHelper.BusinessLogic.SessionState.ISessionState" Collapsed="true">
+    <Position X="17" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>SessionState\ISessionState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

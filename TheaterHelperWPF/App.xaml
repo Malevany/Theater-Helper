@@ -1,0 +1,51 @@
+﻿<Application x:Class="TheaterHelperWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TheaterHelperWPF"
+             xmlns:views="clr-namespace:TheaterHelperWPF.View"
+             xmlns:vm="clr-namespace:TheaterHelperWPF.ViewModel">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type vm:HomeScreenViewModel}">
+            <views:HomeScreenView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ActorsViewModel}">
+            <views:ActorsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ActorShortViewModel}">
+            <views:ActorShortView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ActorViewModel}">
+            <views:ActorView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RepertoireViewModel}">
+            <views:RepertoireView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PlayShortViewModel}">
+            <views:PlayShortView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PlayViewModel}">
+            <views:PlayView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RoleShortViewModel}">
+            <views:RoleShortView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TroupeDetailsViewModel}">
+            <views:TroupeDetailsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TroupeDetailsInstructionViewModel}">
+            <views:TroupeDetailsInstructionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TimetableViewModel}">
+            <views:TimetableView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SubmissionShortViewModel}">
+            <views:SubmissionShortView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SubmissionViewModel}">
+            <views:SubmissionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TroupeShortViewModel}">
+            <views:TroupeShortView/>
+        </DataTemplate>
+    </Application.Resources>
+</Application>
